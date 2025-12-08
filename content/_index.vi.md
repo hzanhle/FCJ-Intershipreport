@@ -1,39 +1,38 @@
 ---
-title: "Báo cáo thực tập"
+title: "Báo Cáo Thực Tập"
 weight: 1
 chapter: false
 ---
 
-# Báo cáo thực tập
-### Thông tin sinh viên:
-&emsp; **Họ và tên:** Phan Tấn Hải
+# Báo Cáo Thực Tập
 
-&emsp; **Số điện thoại:** 0989888990793837962
+### Thông Tin Sinh Viên:
+&emsp; **Họ và Tên:** Lê Nguyễn Hoàng Anh
 
-&emsp; **Email:** haiptse180327@fpt.edu.vn
+&emsp; **Số Điện Thoại:** 0938785763
 
-&emsp; **Trường:** Đại học FPT - Hồ Chí Minh
+&emsp; **Email:** anhlnhse184416@fpt.edu.vn
 
-&emsp; **Ngành:** Công nghệ thông tin
+&emsp; **Trường Đại Học:** Đại học FPT - TP. Hồ Chí Minh
+
+&emsp; **Chuyên Ngành:** Kỹ thuật Phần mềm
 
 &emsp; **Lớp:** AWS082025
 
-&emsp; **Công ty thực tập:** Công ty TNHH Amazon Web Services Vietnam
+&emsp; **Công Ty Thực Tập:** Amazon Web Services Vietnam Co., Ltd.
 
-&emsp; **Vị trí thực tập:** FCJ Cloud Intern
+&emsp; **Vị Trí Thực Tập:** Thực tập sinh FCJ Cloud
 
-&emsp; **Thời gian thực tập:** Từ ngày 12/08/2025 đến ngày 12/11/2025
+&emsp; **Thời Gian Thực Tập:** Từ 12/08/2025 đến 12/11/2025
 
 ![Ảnh đại diện của bạn](/images/avatar.png)
 
+### Nội Dung Báo Cáo
 
-
-### Nội dung báo cáo
-
-1.  [Worklog](1-Worklog/)
-2.  [Proposal](2-Proposal/)
-3.  [Các bài blogs đã dịch](3-BlogsTranslated/)
-4.  [Các events đã tham gia](4-EventParticipated/)
-5.  [Workshop](5-Workshop/)
-6.  [Tự đánh giá](6-Self-evaluation/)
-7.  [Chia sẻ, đóng góp ý kiến](7-Feedback/)
+1. [Nhật ký công việc (Worklog)](1-Worklog/)
+2. [Đề xuất dự án (Proposal)](2-Proposal/)
+3. [Bản dịch blog (Translated Blogs)](3-BlogsTranslated/)
+4. [Các sự kiện đã tham gia](4-EventParticipated/)
+5. [Workshop](5-Workshop/)
+6. [Tự đánh giá (Self-evaluation)](6-Self-evaluation/)
+7. [Chia sẻ và phản hồi (Sharing and Feedback)](7-Feedback/)
