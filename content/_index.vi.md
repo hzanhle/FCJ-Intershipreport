@@ -23,7 +23,7 @@ chapter: false
 
 &emsp; **Vị Trí Thực Tập:** Thực tập sinh FCJ Cloud
 
-&emsp; **Thời Gian Thực Tập:** Từ 12/08/2025 đến 12/11/2025
+&emsp; **Thời Gian Thực Tập:** Từ 08/09/2025 đến 12/12/2025
 
 ![Ảnh đại diện của bạn](/images/avatar.png)
 

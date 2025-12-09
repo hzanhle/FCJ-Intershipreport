@@ -1,12 +1,12 @@
 ---
-title : "Các bước chuẩn bị"
-weight : 2
+title : "Kết nối ESP32 với IoT Core"
+weight : 2 
 chapter : false
 pre : " <b> 5.2. </b> "
 ---
 
-#### IAM permissions
-Gắn IAM permission policy sau vào tài khoản aws user của bạn để triển khai và dọn dẹp tài nguyên trong workshop này.
+#### Quyền IAM
+Thêm chính sách quyền IAM sau vào tài khoản người dùng của bạn để triển khai và dọn dẹp workshop.
 ```
 {
     "Version": "2012-10-17",
@@ -215,27 +215,110 @@ Gắn IAM permission policy sau vào tài khoản aws user của bạn để tri
 
 ```
 
-#### Khởi tạo tài nguyên bằng CloudFormation
+#### Kết nối ESP32 bằng IoT Core
 
-Trong lab này, chúng ta sẽ dùng N.Virginia region (us-east-1).
+Trong lab này, chúng ta sử dụng **Singapore ap-southeast-1**.
 
-Để chuẩn bị cho môi trường làm workshop, chúng ta deploy CloudFormation template sau (click link): [PrivateLinkWorkshop ](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.us-east-1.amazonaws.com/reinvent-endpoints-builders-session/Nested.yaml&stackName=PLCloudSetup). Để nguyên các lựa chọn mặc định.
+Để chuẩn bị môi trường workshop, tạo **IoT Core Template** (nhấp link): [PrivateLinkWorkshop ](https://ap-southeast-1.console.aws.amazon.com/iot/home?region=ap-southeast-1#/thing/ESP32_01). Chấp nhận tất cả giá trị mặc định khi triển khai template.
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack1.png)
+![create stack](/images/5-Workshop/5.2-Prerequisite/CreateThings1.jpeg)
 
-+ Lựa chọn 2 mục acknowledgement 
-+ Chọn Create stack
++ Chọn **IoT Core template**
++ Chọn **Create Things**
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack2.png)
+![create stack](/images/5-Workshop/5.2-Prerequisite/CreateThings2.jpeg)
 
-Quá trình triển khai CloudFormation cần khoảng 15 phút để hoàn thành.
++ Chọn **Create single thing**
++ Chọn **Next**
 
-![complete](/images/5-Workshop/5.2-Prerequisite/complete.png)
+![complete](/images/5-Workshop/5.2-Prerequisite/CreateThings3.jpeg)
 
-+ 2 VPCs đã được tạo
++ Đặt tên **thing**
++ Chọn **Next**
 
-![vpcs](/images/5-Workshop/5.2-Prerequisite/vpcs.png)
+![vpcs](/images/5-Workshop/5.2-Prerequisite/CreateThings4.jpeg)
 
-+ 3 EC2s đã được tạo
++ Chọn **Recommended Option**
++ Chọn **Next**
+![EC2](/images/5-Workshop/5.2-Prerequisite/CreateThings5.jpeg)
++ Chọn **Create Policy**
++ Chọn **Next**
 
-![EC2](/images/5-Workshop/5.2-Prerequisite/ec2.png)
+![EC2](/images/5-Workshop/5.2-Prerequisite/CreateThings6.jpeg)
++ Đặt tên **Policy**
++ Chọn **Add Four New Statements**
+![EC2](/images/5-Workshop/5.2-Prerequisite/Code.jpg)
++ Dựa trên **Code** để điền **Resource Name**
+![EC2](/images/5-Workshop/5.2-Prerequisite/CreateThings7.jpeg)
+
++ Chọn **Policy Action** như hình
++ Điền **Policy Resource** với thông tin của bạn
++ Chọn **Create**
+
+![EC2](/images/5-Workshop/5.2-Prerequisite/CreateThings8.jpeg)
+
++ Chọn **Create Policy**
+
+![EC2](/images/5-Workshop/5.2-Prerequisite/CreateThings9.jpeg)
++ Chọn **ESP32_POLICY**
++ Chọn **Create thing**
+
+#### Mã IoT
+Thêm đoạn code sau để kết nối ESP32.
+```
+
+{
+#ifndef AWS_CONFIG_H
+#define AWS_CONFIG_H
+#include <pgmspace.h>
+
+
+
+// Wi-Fi (Connect to your hotspot)
+#define WIFI_SSID "ABC"
+#define WIFI_PASSWORD "***"
+
+// ================== AWS IoT Core ==================
+// ✅ Endpoint trong AWS CLI 
+#define AWS_IOT_ENDPOINT ""
+
+// ✅ Thing name trùng với AWS Thing
+#define AWS_IOT_CLIENT_ID "ESP32_01"
+
+// ✅ Topics khớp với policy của bạn
+#define AWS_IOT_PUBLISH_TOPIC "esp32/pub"
+#define AWS_IOT_SUBSCRIBE_TOPIC "esp32/sub"
+
+// Chứng chỉ
+static const char AWS_CERT_CA[] PROGMEM = R"EOF(
+
+)EOF";
+//Device Certificate
+static const char AWS_CERT_CRT[] PROGMEM = R"KEY(
+
+)KEY";
+
+static const char AWS_CERT_PRIVATE[] PROGMEM = R"KEY(
+
+)KEY";
+
+#endif
+}
+```
+![EC2](/images/5-Workshop/5.2-Prerequisite/CreateCert1.jpeg)
++ Chọn **Create Certificate**
+
+
+![EC2](/images/5-Workshop/5.2-Prerequisite/CreateCert2.jpeg)
++ Chọn **Create**
+
+![EC2](/images/5-Workshop/5.2-Prerequisite/CreateCert3.jpeg)
++ Tải về **4 Certificate (Device, Public Key File, Private Key File, CA1)** 
++ Chọn **Continue**
+
+![EC2](/images/5-Workshop/5.2-Prerequisite/MQTT1.jpeg)
++ Chọn **esp32/pub**
++ Chọn **Subcribe**
+
+![EC2](/images/5-Workshop/5.2-Prerequisite/MQTT2.jpeg)
+
